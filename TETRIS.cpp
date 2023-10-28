@@ -1,13 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#define n 4
+#define ancho 20 
+#define largo 10
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 700), "TETRIS");
+    sf::RenderWindow window(sf::VideoMode(800, 620), "TETRIS");
 
-    sf::RectangleShape shape2[n][n];
-  
+    sf::RectangleShape shape[ancho][largo];
 
     while (window.isOpen())
     {
@@ -20,16 +20,20 @@ int main()
 
         window.clear();
 
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < ancho; j++)
         {
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < largo; i++)
             {
-                window.draw(shape2[i][j]);
-                shape2[i][j].setPosition(i * 55, j * 55);
-                shape2[i][j].setSize(sf::Vector2f(50.f, 50.f));
-                shape2[i][j].setFillColor(sf::Color::Cyan);
+                window.draw(shape[i][j]);
+                shape[i][j].setPosition((i * 30)+10, (j * 30)+10);
+                shape[i][j].setSize(sf::Vector2f(30.f, 30.f));
+                shape[i][j].setFillColor(sf::Color::Black);
+                shape[i][j].setOutlineColor(sf::Color::White);
+                shape[i][j].setOutlineThickness(1);
             }
+
         }
+
         window.display();
     }
 
